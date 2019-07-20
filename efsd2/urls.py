@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.contrib.auth import views
 from django.urls import path
 from django.contrib.auth import views as auth_views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('portfolio.urls')),
-   url(r'^accounts/login/$', views.login, name='login'),
-   url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+   url(r'^portfolio/login/$', views.login, name='login'),
+   url(r'^portfolio/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     path('accounts/password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('accounts/password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
@@ -32,3 +33,7 @@ urlpatterns = [
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                            document_root=settings.MEDIA_ROOT)

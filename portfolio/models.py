@@ -3,7 +3,8 @@ from django.db import models
 from django.utils import timezone
 
 from django.contrib.auth.models import User
-
+from django.db import models
+from django.conf import settings
 import requests
 # Create your models here.
 class Customer(models.Model):
@@ -86,3 +87,4 @@ class Stock(models.Model):
 
     def results_by_stock(self):
         return float(self.current_stock_value()) - float(self.initial_stock_value())
+

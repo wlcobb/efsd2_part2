@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'django.contrib.humanize',
 
+
 ]
 
 MIDDLEWARE = [
@@ -87,7 +88,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'efsd2.urls'
@@ -193,3 +193,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #EMAIL_HOST_PASSWORD = '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'
 #EMAIL_PORT = 587
 #EMAIL_USE_TLS = True
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
