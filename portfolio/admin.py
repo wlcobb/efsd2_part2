@@ -3,6 +3,17 @@
 from django.contrib import admin
 from .models import Customer, Investment, Stock
 
+
+from django.contrib import admin
+
+
+
+
+def portfolio_pdf(obj):
+    return mark_safe('<a href="{}">PDF</a>'.format(
+        reverse('customer:portfolio_pdf', args=[obj.id])))
+portfolio_pdf.short_description = 'Portfolio'
+
 class CustomerList(admin.ModelAdmin):
     list_display = ('cust_number', 'name', 'city', 'cell_phone')
     list_filter = ('cust_number', 'name', 'city')
